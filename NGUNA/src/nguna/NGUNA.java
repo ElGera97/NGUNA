@@ -16,6 +16,7 @@ public class NGUNA {
     public static void main(String[] args) {
         
         int a;
+        int B;
         // TODO code application logic here
     }
     
