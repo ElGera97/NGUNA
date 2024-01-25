@@ -297,7 +297,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void mi_gestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_gestionarUsuarioActionPerformed
         GestionarUsers viewGestionarUser = new GestionarUsers();
-        jDesktopPane_new.add(viewGestionarUser).setBounds(200, 120, 600, 400);
+        jDesktopPane_new.add(viewGestionarUser).setBounds(300, 100, 600, 400);
         viewGestionarUser.setVisible(true);
     }//GEN-LAST:event_mi_gestionarUsuarioActionPerformed
 
