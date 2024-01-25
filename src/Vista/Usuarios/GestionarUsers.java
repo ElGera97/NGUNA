@@ -14,7 +14,7 @@ import modelo.Usuario;
 
 public class GestionarUsers extends javax.swing.JInternalFrame {
 
-    public int idUsuario;
+    public int idUsuario ;
     Messages datacontex = new Messages();
 
     public GestionarUsers() {
@@ -38,9 +38,9 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         GESTIONAR_USUARIO = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPaneListUser = new javax.swing.JScrollPane();
         jtListUser = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         panelListUser = new javax.swing.JPanel();
         btnDelet = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -82,8 +82,11 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
         GESTIONAR_USUARIO.setOpaque(true);
         jPanel1.add(GESTIONAR_USUARIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 40));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPaneListUser.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPaneListUser.setForeground(new java.awt.Color(255, 255, 255));
 
+        jtListUser.setBackground(new java.awt.Color(0, 0, 0));
+        jtListUser.setForeground(new java.awt.Color(255, 255, 255));
         jtListUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -95,10 +98,13 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtListUser.setGridColor(new java.awt.Color(51, 0, 204));
+        jtListUser.setRowHeight(32);
         jScrollPaneListUser.setViewportView(jtListUser);
 
-        jPanel2.add(jScrollPaneListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 80));
+        jPanel1.add(jScrollPaneListUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 580, 80));
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 80));
 
         panelListUser.setBackground(new java.awt.Color(255, 255, 255));
@@ -359,14 +365,14 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
     private void LoadListUser() {
         Connection cn = conexion.Conexion.conectar();
         DefaultTableModel tblModel = new DefaultTableModel();
-        String sql = "SELECT nombre,apellido,usuario,password,telefono,estado  FROM tb_usuario;";
+        String sql = "SELECT * FROM tb_usuario;";
         Statement st;
         try {
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             GestionarUsers.jtListUser = new JTable(tblModel);
             GestionarUsers.jScrollPaneListUser.setViewportView(GestionarUsers.jtListUser);
-            //tblModel.addColumn("idUsuario");
+            tblModel.addColumn("idUsuario");
             tblModel.addColumn("nombre");
             tblModel.addColumn("apellido");
             tblModel.addColumn("usuario");
@@ -375,15 +381,16 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
             tblModel.addColumn("estado");
             System.out.println(rs);
             while (rs.next()) {
-                Object fila[] = new Object[6];
-                for (int i = 0; i < 6; i++) {
-                    fila[i] = rs.getObject(i + 1);
-                }
+                Object fila[] = new Object[7];
+                for (int i = 0; i < 7; i++) {
+                    fila[i] = rs.getObject(i +1);
+                                    }
                 tblModel.addRow(fila);
                 System.out.println(fila);
                 //   JOptionPane.showMessageDialog(null, fila[1]);
             }
             cn.close();
+            this.jtListUser.removeColumn(jtListUser.getColumnModel().getColumn(0));
         } catch (SQLException e) {
         }
         jtListUser.addMouseListener(new MouseAdapter() {
@@ -391,10 +398,19 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
             public void mouseClicked(MouseEvent e) {
                 int fila_point = jtListUser.rowAtPoint(e.getPoint());
                 int columna_point = 0;
+              
 
                 if (fila_point > -1) {
                     idUsuario = (int) tblModel.getValueAt(fila_point, columna_point);
+                   // int dataT = (int) tblModel.getValueAt(0, 0);
                     sendUserSelect(idUsuario);
+                  //  System.out.println("la dataT ES: "+dataT);
+//                    if (columna_point ==dataT) {
+//                    JOptionPane.showMessageDialog(null, "PULSASRE LA FILA 1");
+//                    }
+//                    else {
+//                        JOptionPane.showMessageDialog(null, "NO PULSASRE LA FILA 1");
+//                            }
                 } else {
                 }
             }
