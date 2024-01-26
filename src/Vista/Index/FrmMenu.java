@@ -9,25 +9,24 @@ import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 
 public class FrmMenu extends javax.swing.JFrame {
-    
-    public static JDesktopPane jDesktopPane_new;
-    
 
-    public FrmMenu() { 
+    public static JDesktopPane jDesktopPane_new;
+
+    public FrmMenu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
-        this.setExtendedState(this.MAXIMIZED_BOTH); 
+        this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         this.setTitle("SISTEMA DE VENTAS");
-        
+
         this.setLayout(null);
         jDesktopPane_new = new JDesktopPane();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        
-        this.jDesktopPane_new.setBounds(0,0 ,ancho,  (alto -110));
+
+        this.jDesktopPane_new.setBounds(0, 0, ancho, (alto - 110));
         this.add(jDesktopPane_new);
-        
+
     }
 
     /**
@@ -278,15 +277,13 @@ public class FrmMenu extends javax.swing.JFrame {
         // funcion para lanzar el InterFrame de GESTIONAR CATEGORIA
         InterGestionarCategoria intergestiCate = new InterGestionarCategoria();
         jDesktopPane_new.add(intergestiCate);
-        intergestiCate.setVisible(true);                
+        intergestiCate.setVisible(true);
     }//GEN-LAST:event_mi_gestionarCategoriasActionPerformed
 
     private void mi_nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_nuevoUsuarioActionPerformed
         newUser formNewUser1 = new newUser();
-        jDesktopPane_new.add(formNewUser1);
+        jDesktopPane_new.add(formNewUser1).setBounds(300,100,600,400);
         formNewUser1.setVisible(true);
-        
-        
     }//GEN-LAST:event_mi_nuevoUsuarioActionPerformed
 
     private void mi_newProduct(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_newProduct
@@ -297,8 +294,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void mi_gestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_gestionarUsuarioActionPerformed
         GestionarUsers viewGestionarUser = new GestionarUsers();
-        jDesktopPane_new.add(viewGestionarUser).setBounds(300, 100, 600, 400);
-        viewGestionarUser.setVisible(true);
+        jDesktopPane_new.add(viewGestionarUser).setBounds(30, 100, 1200, 400);
+        viewGestionarUser.setVisible(true);        
     }//GEN-LAST:event_mi_gestionarUsuarioActionPerformed
 
     /**
