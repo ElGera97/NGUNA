@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import MVC.modelo.Usuario;
+import java.awt.event.ActionEvent;
 
 public class GestionarUsers extends javax.swing.JInternalFrame {
 
@@ -309,37 +310,36 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void txtNombreActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+    private void txtApellidoActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+    private void txtUsuarioActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+    private void txtContraseñaActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+    private void txtTelefonoActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
-    private void txtTipoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoUserActionPerformed
+    private void txtTipoUserActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtTipoUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoUserActionPerformed
 
-    private void btnDeletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletActionPerformed
+    private void btnDeletActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeletActionPerformed
         if (!txtNombre.getText().isEmpty()
                 || !txtApellido.getText().isEmpty()
                 || !txtUsuario.getText().isEmpty()
                 || !txtContraseña.getText().isEmpty()
                 || !txtTelefono.getText().isEmpty()) {
-
             Usuario usuario = new Usuario();
             Ctrl_usuario ctrl_usuario = new Ctrl_usuario();
             usuario.setNombre(txtNombre.getText().trim());
@@ -359,7 +359,7 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDeletActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnSaveActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (!txtNombre.getText().isEmpty()
                 || !txtApellido.getText().isEmpty()
                 || !txtUsuario.getText().isEmpty()
@@ -386,7 +386,7 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnDisponeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisponeActionPerformed
+    private void btnDisponeActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDisponeActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnDisponeActionPerformed
 
@@ -500,7 +500,6 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR EL REGISTRO: " + e);
         }
-
     }
 
     private void unShowSaveChange() {

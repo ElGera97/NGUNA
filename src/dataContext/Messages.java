@@ -31,6 +31,11 @@ public class Messages {
     public void sucessfullUpdate(){
     JOptionPane.showConfirmDialog(null, "LA INFORMACIÓN SE ACTUALIZO CON ÉXITO");
     }
+    
+    public void successfullDeleted(){
+    JOptionPane.showMessageDialog(null, "LA INFORMACIÓN SE ELIMINÓ EXITOSAMENTE");
+    }
+    
     public void errorToSave() {
         JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LA INFORMACIÓN");
     }

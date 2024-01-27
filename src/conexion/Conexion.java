@@ -11,7 +11,7 @@ public class Conexion {
     
     public static Connection conectar(){
         try{
-        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/bd_sistema_ventas", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://sql3.freemysqlhosting.net/sql3680057", "sql3680057", "cc3FGldEZB");
         return connection;
         }
         catch (SQLException e){
