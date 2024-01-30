@@ -446,11 +446,12 @@ public class GestionarUsers extends javax.swing.JInternalFrame {
                 }
                 tblModel.addRow(fila);
                 System.out.println(fila);
-                //   JOptionPane.showMessageDialog(null, fila[1]);
+                //JOptionPane.showMessageDialog(null, fila[1]);
             }
             cn.close();
             GestionarUsers.jtListUser.removeColumn(jtListUser.getColumnModel().getColumn(0));
-            GestionarUsers.jtListUser.setGridColor(new java.awt.Color(51, 0, 204));
+            GestionarUsers.jtListUser.removeColumn(jtListUser.getColumnModel().getColumn(5));
+            GestionarUsers.jtListUser.setBackground(new java.awt.Color(51, 0, 204));
             GestionarUsers.jtListUser.setRowHeight(32);
             GestionarUsers.jScrollPaneListUser.setViewportView(jtListUser);
             jtListUser.setBackground(new java.awt.Color(235, 235, 192));
