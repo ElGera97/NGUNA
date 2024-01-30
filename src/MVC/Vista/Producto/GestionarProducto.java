@@ -1,7 +1,10 @@
 package MVC.Vista.Producto;
 
+import MVC.Controlador.Ctrl_Productos;
 import MVC.Vista.Usuarios.GestionarUsers;
 import static MVC.Vista.Usuarios.GestionarUsers.jtListUser;
+import MVC.modelo.Producto;
+import dataContext.Messages;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
@@ -14,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class GestionarProducto extends javax.swing.JInternalFrame {
 
-    private int idProducto;
+    Messages dataContext = new Messages();
+
+    public int idProducto;
     int getIdCategoriaCambo = 0;
 
     public GestionarProducto() {
@@ -290,7 +295,26 @@ public class GestionarProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeletProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletProductActionPerformed
-        // TODO add your handling code here:
+        Connection cn = conexion.Conexion.conectar();
+        if (!txtNombre.getText().isEmpty()
+                || !txtCantidad.getText().isEmpty()
+                || !txtPrecio.getText().isEmpty()
+                || !txtPrecio.getText().isEmpty()
+                || !txtDescripcion.getText().isEmpty()) {
+            Producto producto = new Producto();
+            Ctrl_Productos ctrl_Productos = new Ctrl_Productos();
+            producto.setNombre(txtNombre.getText().trim());
+            producto.setCantidad(txtCantidad.getText().trim());
+            //producto.setPrecio(Integer.parseInt(txtPrecio.getText().trim()));
+            producto.setDescripcion(txtDescripcion.getText().trim());
+            if (!ctrl_Productos.DeletProduc(idProducto)) {
+                unShowSaveChange();
+                dataContext.successfullDeleted();
+            }
+        } else {
+        }
+
+        LoadListProduct();
     }//GEN-LAST:event_btnDeletProductActionPerformed
 
     private void btnEditProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProductActionPerformed
@@ -357,7 +381,18 @@ public class GestionarProducto extends javax.swing.JInternalFrame {
 
     private void LoadListProduct() {
         Connection cn = conexion.Conexion.conectar();
-        DefaultTableModel tblModel = new DefaultTableModel();
+//        DefaultTableModel tblModel = new DefaultTableModel(null, null) {
+//            @Override
+//            public boolean isCellEditable(int filas, int columnas) {
+//                // return super.isCellEditable(row, column);
+//                if (columnas == 5) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        } 
+DefaultTableModel tblModel = new DefaultTableModel();
         String sql = "SELECT * FROM tb_producto;";
         Statement st;
         try {
@@ -365,7 +400,7 @@ public class GestionarProducto extends javax.swing.JInternalFrame {
             ResultSet rs = st.executeQuery(sql);
             GestionarProducto.jtListProduct = new JTable(tblModel);
             GestionarProducto.jScrollPaneListProduct.setViewportView(GestionarProducto.jtListProduct);
-            tblModel.addColumn("idProducto");
+                        tblModel.addColumn("idProducto");
             tblModel.addColumn("nombre");
             tblModel.addColumn("cantidad");
             tblModel.addColumn("precio");
@@ -395,7 +430,7 @@ public class GestionarProducto extends javax.swing.JInternalFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 btnDeletProduct.setEnabled(true);
-                btnAddProdcut.setEnabled(true);
+                btnEditProduct.setEnabled(true);
                 int fila_point = jtListProduct.rowAtPoint(e.getPoint());
                 int columna_point = 0;
 
@@ -436,6 +471,21 @@ public class GestionarProducto extends javax.swing.JInternalFrame {
 
             }
         });
+        
+        
+        //jtListProduct.isCellEditable(null, tblModel){
+        //        DefaultTableModel tblModel = new DefaultTableModel(null, null) {
+//            @Override
+//            public boolean isCellEditable(int filas, int columnas) {
+//                // return super.isCellEditable(row, column);
+//                if (columnas == 5) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        } 
+   // }
     }
 //    private void LoadListProduct() {
 //        Connection cn = conexion.Conexion.conectar();
