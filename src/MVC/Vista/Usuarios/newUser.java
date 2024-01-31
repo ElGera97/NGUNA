@@ -1,10 +1,11 @@
 package MVC.Vista.Usuarios;
 
-import MVC.Controlador.Ctrl_usuario;
+import MVC.Controlador.Ctrl_Usuario;
 import dataContext.Messages;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import MVC.modelo.Usuario;
+import java.awt.Color;
 
 public class newUser extends javax.swing.JInternalFrame {
 
@@ -80,6 +81,11 @@ public class newUser extends javax.swing.JInternalFrame {
         txtNombre.setAlignmentY(0.0F);
         txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtNombre.setMargin(new java.awt.Insets(10, 0, 0, 0));
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -98,6 +104,11 @@ public class newUser extends javax.swing.JInternalFrame {
         txtApellido.setFont(new java.awt.Font("Engravers MT", 1, 14)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 51));
         txtApellido.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtApellidoMouseClicked(evt);
+            }
+        });
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
@@ -116,6 +127,11 @@ public class newUser extends javax.swing.JInternalFrame {
         txtUsuario.setFont(new java.awt.Font("Engravers MT", 1, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 51));
         txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUsuarioMouseClicked(evt);
+            }
+        });
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -134,6 +150,11 @@ public class newUser extends javax.swing.JInternalFrame {
         txtPassword.setFont(new java.awt.Font("Engravers MT", 1, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 51));
         txtPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
@@ -154,6 +175,11 @@ public class newUser extends javax.swing.JInternalFrame {
         txtTelefono.setToolTipText("");
         txtTelefono.setActionCommand("<Not Set>");
         txtTelefono.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelefonoMouseClicked(evt);
+            }
+        });
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
@@ -206,17 +232,45 @@ public class newUser extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        Ctrl_usuario ctrl_usuario = new Ctrl_usuario();
+        Ctrl_Usuario ctrl_usuario = new Ctrl_Usuario();
         Usuario usuario = new Usuario();
 
         //Validation de tex
+//        if (txtNombre.getText().equals("")) {
+//            txtNombre.setBackground(Color.red);
+//            else if()[]
+//            if (txtApellido.getText().equals("")) {
+//                txtApellido.setBackground(Color.red);
+//                if (txtUsuario.getText().equals("")) {
+//                    txtUsuario.setBackground(Color.red);
+//                    if (txtPassword.getText().equals("")) {
+//                        txtPassword.setBackground(Color.red);
+//                        if (txtTelefono.getText().equals("")) {
+//                            txtTelefono.setBackground(Color.red);
+//                        }
+//                        
+//
+//                    }
+//
+//                }
+//
+//            }
+//
+//        }
+
         if (txtNombre.getText().equals("")
                 || txtApellido.getText().equals("")
                 || txtUsuario.getText().equals("")
                 || txtPassword.getText().equals("")
                 || txtTelefono.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "SE TIENE CONFIGURAR LA VALIDACION");
-        } else {
+            txtNombre.setBackground(Color.red);
+            txtApellido.setBackground(Color.red);
+            txtUsuario.setBackground(Color.red);
+            txtPassword.setBackground(Color.red);
+            txtTelefono.setBackground(Color.red);
+            JOptionPane.showConfirmDialog(null, "VERIFIQUE LA INFORMACION");
+        } 
+        else {
             if (!ctrl_usuario.comprobarExitencia(txtUsuario.getText().trim())) {
                 usuario.setIdUsuario(0);
                 usuario.setNombre(txtNombre.getText().trim());
@@ -258,6 +312,26 @@ public class newUser extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        txtNombre.setBackground(Color.black);
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtApellidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMouseClicked
+        txtApellido.setBackground(Color.black);
+    }//GEN-LAST:event_txtApellidoMouseClicked
+
+    private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
+        txtUsuario.setBackground(Color.black);
+    }//GEN-LAST:event_txtUsuarioMouseClicked
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+        txtPassword.setBackground(Color.black);
+    }//GEN-LAST:event_txtPasswordMouseClicked
+
+    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
+        txtTelefono.setBackground(Color.black);
+    }//GEN-LAST:event_txtTelefonoMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel APELLIDO;
     private javax.swing.JLabel NOMBRE;
@@ -277,12 +351,12 @@ public class newUser extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpiar() {
-       txtNombre.setText("");
-       txtApellido.setText("");
-       txtUsuario.setText("");
-       txtPassword.setText("");
-       txtTelefono.setText("");
-       
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtUsuario.setText("");
+        txtPassword.setText("");
+        txtTelefono.setText("");
+
     }
 
 }
