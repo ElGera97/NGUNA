@@ -392,15 +392,15 @@ public class GestionarProducto extends javax.swing.JInternalFrame {
 //                }
 //            }
 //        } 
-DefaultTableModel tblModel = new DefaultTableModel();
-        String sql = "SELECT * FROM tb_producto;";
+        DefaultTableModel tblModel = new DefaultTableModel();
+        String sql = "SELECT  p.idProducto, p.nombre, p.cantidad, p.precio, p.descripcion, p.porcentajeIva, c.descripcion, p.estado FROM tb_producto AS p, tb_categoria AS c ORDER BY c.descripcion ASC;";
         Statement st;
         try {
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             GestionarProducto.jtListProduct = new JTable(tblModel);
             GestionarProducto.jScrollPaneListProduct.setViewportView(GestionarProducto.jtListProduct);
-                        tblModel.addColumn("idProducto");
+            tblModel.addColumn("idProducto");
             tblModel.addColumn("nombre");
             tblModel.addColumn("cantidad");
             tblModel.addColumn("precio");
@@ -471,8 +471,7 @@ DefaultTableModel tblModel = new DefaultTableModel();
 
             }
         });
-        
-        
+
         //jtListProduct.isCellEditable(null, tblModel){
         //        DefaultTableModel tblModel = new DefaultTableModel(null, null) {
 //            @Override
@@ -485,7 +484,7 @@ DefaultTableModel tblModel = new DefaultTableModel();
 //                }
 //            }
 //        } 
-   // }
+        // }
     }
 //    private void LoadListProduct() {
 //        Connection cn = conexion.Conexion.conectar();
